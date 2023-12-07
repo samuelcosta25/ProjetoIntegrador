@@ -1,0 +1,100 @@
+.carousel {
+    display: flex;
+    justify-content: center;
+}
+
+.banner img {
+    height: 600px;
+    width: 1024px;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: x-large;
+    border-radius: 10px;
+}
+
+.carousel-caption:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+
+}
+
+.secao1 {
+    background-image: url(img/bg1.jpg);
+    background-position-y: -450px;
+    background-size: cover;
+    color: white;
+
+}
+
+.label {
+    position: absolute;
+    font-size: 32px;
+    left: 250px;
+    top: 135px;
+
+}
+
+.nav-item:hover {
+    color: aliceblue;
+    background-color: rgb(119, 208, 111);
+    border-radius: 7%;
+}
+
+.navbar-brand img {
+    width: 130px;
+}
+
+.secao3{
+    height: 500px;
+    background-color: rgba(38, 182, 52, 0.529); 
+    display: flex; 
+    justify-content: space-evenly;
+    padding: 50px;
+}
+
+.secao31{
+    width: 500px;
+    height: 350px;
+    background-image: url(img/sobre.avif);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    color: rgb(43, 43, 43);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 75px;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; 
+    border-radius: 10%;
+}
+
+
+.secao31:hover{
+    width: 550px;
+    height: 400px;
+    opacity: 0.9;
+}
+
+.secao32{
+    width: 500px;
+    height: 350px;
+    background-image: url(img/feedback.avif);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    color: rgb(43, 43, 43);
+    padding: 30px;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; 
+    border-radius: 10%;
+}
+
+
+.secao32:hover{
+    width: 550px;
+    height: 400px;
+    opacity: 0.9;
+}
