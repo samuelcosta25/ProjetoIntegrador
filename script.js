@@ -56,3 +56,7 @@ function addPetInput() {
   // Adiciona o novo input ao div com o id "petInputs"
   document.getElementById("petInputs").appendChild(newInput);
 }
+
+function inscrever() {
+  var inscricao = document.getElementById("newsletter1");
+}

@@ -38,7 +38,7 @@
 
 .nav-item:hover {
     color: aliceblue;
-    background-color: rgb(119, 208, 111);
+    background-color: rgb(91, 181, 83);
     border-radius: 7%;
 }
 
@@ -48,7 +48,7 @@
 
 .secao3{
     height: 500px;
-    background-color: rgba(38, 182, 52, 0.529); 
+    background-color: rgba(0, 229, 255, 0.607); 
     display: flex; 
     justify-content: space-evenly;
     padding: 50px;
