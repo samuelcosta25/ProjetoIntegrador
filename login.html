@@ -38,10 +38,10 @@
                     <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre nós e Feedbacks</a></li>
                 </ul>
             </div>
-            <!-- Botões de login e sign-up -->
+            <!-- Botões de login e Cadastro -->
             <div class="text-end">
                 <a href="login.html"><button type="button" class="btn btn-outline-warning me-2">Login</button></a>
-                <a href="login.html"><button type="button" class="btn btn-warning">Sign-up</button></a>
+                <a href="login.html"><button type="button" class="btn btn-warning">Cadastro</button></a>
             </div>
 
     </nav>
@@ -67,37 +67,40 @@
             <label for="tab2">Cadastre-se</label>
 
             <div class="tabs">
+                <div class="aba1">
+                    <div class="content">
+                        <!--Login-->
+                        <h2>Entre na sua conta:</h2>
 
-                <div class="content">
-                    <!--Login-->
-                    <h2>Entre na sua conta:</h2>
+                        <form>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                    required>
+                                <div id="emailHelp" class="form-text">Nunca compartilhe seus dados com ninguem.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label" required>Senha</label>
+                                <input type="password" class="form-control" id="password">
+                            </div>
 
-                    <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
-                            <div id="emailHelp" class="form-text">Nunca compartilhe seus dados com ninguem.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label" required>Senha</label>
-                            <input type="password" class="form-control" id="password">
-                        </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="checkRobot" required>
+                                <label for="checkRobot" for="exampleCheck1">Não sou um robô</label>
+                                <button type="submit" class="btn btn-primary" onclick="entrar()"
+                                    style="margin-left: 80px; width: 280px; height: 50px;">Entrar</button>
+                            </div>
+                        </form>
 
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="checkRobot" required>
-                            <label for="checkRobot" for="exampleCheck1">Não sou um robô</label>
-                            <button type="submit" class="btn btn-primary" onclick="entrar()"
-                                style="margin-left: 80px; width: 280px; height: 50px;">Entrar</button>
-                        </div>
-                    </form>
-
+                    </div>
                 </div>
+                <!--Cadastro-->
 
                 <div class="content">
-                    <!--Cadastro-->
+
 
                     Cadastre-se:
-                    <form class="row g-3" action="cadastro.php">
+                    <form class="row g-3" action="cadastro.php" method="post">
                         <div class="col-md-6">
                             <label for="inputNome" class="form-label">Nome:</label>
                             <input type="nome" class="form-control" id="inputNome" required oninput="habilitaOption()">
@@ -166,7 +169,7 @@
                             </select>
                         </div>
                         <div id="col-12">
-                            <button type="button" onclick="addPetInput()">+ Add Pet</button>    
+                            <button type="button" onclick="addPetInput()">+ Add Pet</button>
                         </div>
                         <div id="petInputs" class="col-12"></div>
 
@@ -178,6 +181,7 @@
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary" onclick="cadastrar()">Concluído</button>
                         </div>
@@ -200,62 +204,52 @@
             <footer class="py-5">
                 <div class="row">
                     <div class="col-6 col-md-2 mb-3">
-                        <h5>Section</h5>
+                        <h5>Catálogo</h5>
                         <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a>
-                            </li>
+                            <li class="nav-item mb-2"><a href="catalogo.html"
+                                    class="nav-link p-0 text-body-secondary">Hotel para pets</a></li>
+                            <li class="nav-item mb-2"><a href="catalogo.html"
+                                    class="nav-link p-0 text-body-secondary">Creche para pets</a></li>
+                            <li class="nav-item mb-2"><a href="catalogo.html"
+                                    class="nav-link p-0 text-body-secondary">SPA para Pets</a></li>
                         </ul>
                     </div>
 
                     <div class="col-6 col-md-2 mb-3">
-                        <h5>Section</h5>
+                        <h5>Seções</h5>
                         <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a>
-                            </li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Faça seu
+                                    agendamento!</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Entre na
+                                    sua
+                                    conta</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Faça seu
+                                    cadastro</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Conheça a
+                                    PET
+                                    7</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Nos
+                                    avalie!</a></li>
                         </ul>
                     </div>
 
-                    <div class="col-6 col-md-2 mb-3">
-                        <h5>Section</h5>
-                        <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a>
-                            </li>
-                        </ul>
-                    </div>
+
 
                     <div class="col-md-5 offset-md-1 mb-3">
                         <form>
-                            <h5>Subscribe to our newsletter</h5>
-                            <p>Monthly digest of what's new and exciting from us.</p>
+                            <h5>Se inscreva para receber nossas ofertas e novidades</h5>
+                            <p>Promoções e ofertas para credenciados.</p>
                             <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                                <label for="newsletter1" class="visually-hidden">Email address</label>
-                                <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                                <button class="btn btn-primary" type="button">Subscribe</button>
+                                <label for="newsletter1" class="visually-hidden">Email</label>
+                                <input id="newsletter1" type="text" class="form-control" placeholder="Email">
+                                <button class="btn btn-primary" type="button" onclick="inscrever()">Inscrever</button>
                             </div>
                         </form>
                     </div>
                 </div>
 
                 <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                    <p>© 2023 Company, Inc. All rights reserved.</p>
+                    <p>© 2023 PET 7 Ltda. Todos os direitos reservados .</p>
                     <ul class="list-unstyled d-flex">
                         <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
                                     <use xlink:href="#twitter"></use>

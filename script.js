@@ -47,15 +47,45 @@ function scrollDestaques() {
   parteScroll.scrollIntoView({ behavior: 'smooth' });
 }
 function addPetInput() {
-  // Cria um novo elemento input
-  var newInput = document.createElement("input");
-  newInput.type = "text";
-  newInput.className = "form-control";
-  newInput.placeholder = "Nome do Pet";
+  // Obtém o contêiner de inputs para pets
+  var petInputsContainer = document.getElementById("petInputs");
 
-  // Adiciona o novo input ao div com o id "petInputs"
-  document.getElementById("petInputs").appendChild(newInput);
+  // Verifica a quantidade atual de inputs para pets
+  var currentPetCount = petInputsContainer.getElementsByClassName("pet-input").length;
+
+  // Limita a adição de pets a 10
+  if (currentPetCount < 10) {
+      // Cria um novo elemento div para conter o input e o botão
+      var newPetContainer = document.createElement("div");
+      newPetContainer.className = "pet-container";
+
+      // Cria um novo elemento input
+      var newInput = document.createElement("input");
+      newInput.type = "text";
+      newInput.className = "form-control pet-input";
+      newInput.placeholder = "Nome do Pet " + (currentPetCount + 1);
+
+      // Cria um novo botão "Excluir Pet"
+      var deleteButton = document.createElement("button");
+      deleteButton.type = "button";
+      deleteButton.className = "btn btn-danger btn-sm";
+      deleteButton.textContent = "Excluir Pet";
+      deleteButton.addEventListener("click", function() {
+          // Remove o contêiner do pet ao clicar no botão
+          petInputsContainer.removeChild(newPetContainer);
+      });
+
+      // Adiciona o novo input e botão ao div com o id "petInputs"
+      newPetContainer.appendChild(newInput);
+      newPetContainer.appendChild(deleteButton);
+      petInputsContainer.appendChild(newPetContainer);
+  } else {
+      // Exibe um alerta se o limite for atingido
+      alert("Você atingiu o limite máximo de 10 pets.");
+  }
 }
+
+
 
 function inscrever() {
   var inscricao = document.getElementById("newsletter1");
