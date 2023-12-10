@@ -1,5 +1,5 @@
 <?php
-// Conectar ao banco de dados (substitua as informações do banco de dados conforme necessário)
+// Conexão com o banco de dados
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,45 +7,38 @@ $dbname = "petseven";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar a conexão
 if ($conn->connect_error) {
-    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
+    die("Conexão falhou: " . $conn->connect_error);
 }
 
-// Processar os dados do formulário
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cpf = $_POST["inputCPF"];
-    $email = $_POST["inputEmail"];
-    $senha = password_hash($_POST["inputPassword"], PASSWORD_DEFAULT);
-    $endereco = $_POST["inputAddress"];
-    $cidade = $_POST["inputCity"];
-    $estado = $_POST["estado"];
-    $cadastrar_pets = isset($_POST["checkbox2"]) ? 1 : 0;
+// Recupera os dados do formulário
+$nome = $_POST['inputNome'];
+$cpf = $_POST['inputCPF'];
+$email = $_POST['inputEmail'];
+$cep = $_POST['inputCEP'];
+$endereco = $_POST['address'];
+$enderecoNumero = $_POST['addressNumber'];
+$cidade = $_POST['inputCity'];
+$estado = $_POST['inputState'];
+$senha = $_POST['inputPassword'];
 
-    // Inserir dados na tabela cadastro
-    $sql = "INSERT INTO cadastro (cpf, email, senha, endereco, cidade, estado, cadastrar_pets) 
-            VALUES ('$cpf', '$email', '$senha', '$endereco', '$cidade', '$estado', $cadastrar_pets)";
+// Verifica se o CPF já está cadastrado
+$sqlVerificarCPF = "SELECT * FROM cadastro WHERE cpf = '$cpf'";
+$resultadoCPF = $conn->query($sqlVerificarCPF);
 
-    if ($conn->query($sql) === TRUE) {
-        // Obter o ID do último registro inserido
-        $last_id = $conn->insert_id;
-
-        // Inserir dados de pets na tabela
-        for ($i = 1; $i <= 10; $i++) {
-            $petField = "pet" . $i;
-            if (isset($_POST[$petField])) {
-                $petName = $_POST[$petField];
-                $sqlPet = "UPDATE cadastro SET $petField = '$petName' WHERE id = $last_id";
-                $conn->query($sqlPet);
-            }
-        }
-
-        echo "Cadastro realizado com sucesso!";
-    } else {
-        echo "Erro ao cadastrar: " . $conn->error;
-    }
+if ($resultadoCPF->num_rows > 0) {
+    echo "Erro: Este CPF já está cadastrado.";
+    exit();
 }
 
-// Fechar a conexão
+// Insere os dados na tabela
+$sqlInserir = "INSERT INTO cadastro (cpf, email, senha, endereco, enderecoNumero, cidade, estado) VALUES ('$cpf', '$email', '$senha', '$endereco', '$enderecoNumero', '$cidade', '$estado')";
+
+if ($conn->query($sqlInserir) === TRUE) {
+    echo "Sucesso: Usuário cadastrado com sucesso.";
+} else {
+    echo "Erro: " . $conn->error;
+}
+
 $conn->close();
 ?>
