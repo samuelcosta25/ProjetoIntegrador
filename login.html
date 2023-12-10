@@ -103,76 +103,50 @@
                     <form class="row g-3" action="cadastro.php" method="post">
                         <div class="col-md-6">
                             <label for="inputNome" class="form-label">Nome:</label>
-                            <input type="nome" class="form-control" id="inputNome" required oninput="habilitaOption()">
+                            <input type="nome" class="form-control" id="inputNome" required >
                         </div>
                         <div class="col-md-6">
                             <label for="inputCPF" class="form-label">CPF:</label>
-                            <input type="CPF" class="form-control" id="inputCPF" required oninput="habilitaOption()">
+                            <input type="CPF" class="form-control" id="inputCPF" required >
                         </div>
                         <div class="col-md-6">
                             <label for="inputEmail" class="form-label">Email:</label>
-                            <input type="email" class="form-control" id="inputEmail" required
-                                oninput="habilitaOption()">
+                            <input type="email" class="form-control" id="inputEmail" required >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCEP" class="form-label">CEP:</label>
+                            <input type="text" class="form-control" id="inputCEP" required ><br>
+                            <button type="button" onclick="buscarEndereco()">Buscar Endereço</button>
                         </div>
                         <div class="col-md-6">
                             <label for="inputPassword" class="form-label">Senha:</label>
-                            <input type="password" class="form-control" id="inputPassword" required
-                                oninput="habilitaOption()">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputAddress" class="form-label">Endereço:</label>
-                            <input type="text" class="form-control" id="inputAddress" required
-                                oninput="habilitaOption()">
+                            <input type="password" class="form-control" id="inputPassword" required >
                         </div>
                         <div class="col-md-6">
                             <label for="confirmaPassword" class="form-label">Confirme sua senha:</label>
-                            <input type="password" class="form-control" id="confirmaPassword" required
-                                oninput="habilitaOption()">
+                            <input type="password" class="form-control" id="confirmaPassword" required >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="address" class="form-label">Endereço:</label>
+                            <input type="text" class="form-control" on id="address" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="addressNumber" class="form-label">Número:</label>
+                            <input type="text" class="form-control" on id="addressNumber" required>
                         </div>
                         <div class="col-md-6">
                             <label for="inputCity" class="form-label">Cidade:</label>
-                            <input type="text" class="form-control" on id="inputCity" required
-                                oninput="habilitaOption()">
+                            <input type="text" class="form-control" on id="inputCity" readonly>
                         </div>
                         <div class="col-md-6">
                             <label for="inputState" class="form-label">Estado:</label>
-                            <select id="estado" name="estado" disabled>
-                                <option selected>Selecione um estado:</option>
-                                <option value="AC">Acre</option>
-                                <option value="AL">Alagoas</option>
-                                <option value="AP">Amapá</option>
-                                <option value="AM">Amazonas</option>
-                                <option value="BA">Bahia</option>
-                                <option value="CE">Ceará</option>
-                                <option value="DF">Distrito Federal</option>
-                                <option value="ES">Espírito Santo</option>
-                                <option value="GO">Goiás</option>
-                                <option value="MA">Maranhão</option>
-                                <option value="MT">Mato Grosso</option>
-                                <option value="MS">Mato Grosso do Sul</option>
-                                <option value="MG">Minas Gerais</option>
-                                <option value="PA">Pará</option>
-                                <option value="PB">Paraíba</option>
-                                <option value="PR">Paraná</option>
-                                <option value="PE">Pernambuco</option>
-                                <option value="PI">Piauí</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="RN">Rio Grande do Norte</option>
-                                <option value="RS">Rio Grande do Sul</option>
-                                <option value="RO">Rondônia</option>
-                                <option value="RR">Roraima</option>
-                                <option value="SC">Santa Catarina</option>
-                                <option value="SP">São Paulo</option>
-                                <option value="SE">Sergipe</option>
-                                <option value="TO">Tocantins</option>
-                                <option value="EX">Estrangeiro</option>
-                            </select>
+                            <input type="text" class="form-control" on id="inputState" readonly>
                         </div>
                         <div id="col-12">
                             <button type="button" onclick="addPetInput()">+ Add Pet</button>
                         </div>
                         <div id="petInputs" class="col-12"></div>
-
+                    
                         <div class="col-12">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="checkbox2">
@@ -181,11 +155,13 @@
                                 </label>
                             </div>
                         </div>
-
+                    
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary" onclick="cadastrar()">Concluído</button>
                         </div>
                     </form>
+                    
+                    
                 </div>
             </div>
         </div>

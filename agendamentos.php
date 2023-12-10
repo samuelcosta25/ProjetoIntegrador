@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root"; // seu nome de usuário MySQL
 $password = ""; // sua senha MySQL
-$dbname = "petseven";
+$dbname = "petseven"; // nome do database
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($conn->query($sql) === TRUE) {
             echo "Agendamento realizado com sucesso!";
+        
         } else {
             echo "Erro ao agendar: " . $conn->error;
         }
