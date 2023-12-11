@@ -125,8 +125,6 @@ function buscarEndereco() {
           document.getElementById("address").value = data.logradouro || '';
           document.getElementById("inputCity").value = data.localidade || '';
           document.getElementById("inputState").value = data.uf || '';
-
-      
         } else {
           alert("CEP não encontrado.");
         }
