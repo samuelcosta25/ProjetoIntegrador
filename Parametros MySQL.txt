@@ -42,3 +42,5 @@ CREATE TABLE feedback (
     avaliacao INT,
     descricao VARCHAR(255)
 );
+
+A FAZER: ESTILIZAÇÃO SOBRE NOS E BANCO CADASTRO

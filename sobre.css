@@ -1,0 +1,66 @@
+ /* Adiciona um estilo para o botão hamburger */
+ .navbar-toggler-icon {}
+
+ /* Estilos adicionais para a seção de feedbacks */
+ #feedbacks {
+     margin-top: 50px;
+ }
+
+ .card {
+     transition: transform 0.3s ease-in-out;
+ }
+
+ .card:hover {
+     transform: scale(1.05);
+ }
+
+ /* Estilos para o formulário de feedback */
+ form {
+     max-width: 600px;
+     margin: auto;
+     margin-bottom: 20px;
+ }
+
+ /* Estilos para a mensagem de confirmação (modal) */
+ #feedbackConfirmation .modal-content {
+     background-color: #28a745;
+     color: #fff;
+     border-radius: 5px;
+ }
+
+ /* Estilos para as estrelas de avaliação */
+ .rating {
+     font-size: 20px;
+     display: inline-block;
+     margin-bottom: 10px;
+     /* Adicionado para ajustar o espaçamento */
+ }
+
+ .rating>span {
+     display: inline-block;
+     position: relative;
+     width: 1.1em;
+     cursor: pointer;
+     /* Retornado para tornar o cursor clicável novamente */
+ }
+
+ .rating>span:before {
+     content: "\2605";
+     position: absolute;
+     color: #FFD700;
+ }
+
+ .rating>span.selected~span:before {
+     color: #ccc;
+ }
+
+ /* Estilos para a mensagem de feedback */
+ .user-feedback {
+     margin-top: 10px;
+     font-style: italic;
+ }
+
+ .mainSobre{
+    background-image: url(img/feedback2) center center no-repeat fixed;
+    background-size: cover;
+ }

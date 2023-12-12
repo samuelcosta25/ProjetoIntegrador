@@ -27,13 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO agendamentos (servico, data, horario) VALUES ('$servico', '$data', '$horario')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "Agendamento realizado com sucesso!";
+            // Exibir alerta de sucesso
+            echo "<script>alert('Agendamento realizado com sucesso!');window.location.href = 'agenda.html';</script>";
         
         } else {
-            echo "Erro ao agendar: " . $conn->error;
+            // Exibir alerta de erro
+            echo "<script>alert('Erro ao agendar: " . $conn->error . "');window.location.href = 'agenda.html';</script>";
         }
     } else {
-        echo "Horário não disponível. Escolha outro horário.";
+        // Exibir alerta de horário indisponível
+        echo "<script>alert('Horário não disponível. Escolha outro horário.');window.location.href = 'agenda.html';</script>";
     }
 }
 

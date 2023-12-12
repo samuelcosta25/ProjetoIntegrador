@@ -137,3 +137,7 @@ function buscarEndereco() {
   }
 }
 
+function mostrarAlerta(mensagem) {
+  alert(mensagem);
+}
+
