@@ -1,44 +1,43 @@
 <?php
-// Conexão com o banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "petseven";
+// Verifica se o formulário foi enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Dados do banco de dados
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "petseven";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    // Cria a conexão com o banco de dados
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
+    // Verifica a conexão
+    if ($conn->connect_error) {
+        die("Erro na conexão com o banco de dados: " . $conn->connect_error);
+    }
+
+    // Recupera os dados do formulário, utilizando isset e mysqli_real_escape_string
+    $nome = isset($_POST["inputNome"]) ? mysqli_real_escape_string($conn, $_POST["inputNome"]) : "";
+    $cpf = isset($_POST["inputCPF"]) ? mysqli_real_escape_string($conn, $_POST["inputCPF"]) : "";
+    $email = isset($_POST["inputEmail"]) ? mysqli_real_escape_string($conn, $_POST["inputEmail"]) : "";
+    $cep = isset($_POST["inputCEP"]) ? mysqli_real_escape_string($conn, $_POST["inputCEP"]) : "";
+    $endereco = isset($_POST["address"]) ? mysqli_real_escape_string($conn, $_POST["address"]) : "";
+    $numero = isset($_POST["addressNumber"]) ? mysqli_real_escape_string($conn, $_POST["addressNumber"]) : "";
+    $cidade = isset($_POST["inputCity"]) ? mysqli_real_escape_string($conn, $_POST["inputCity"]) : "";
+    $estado = isset($_POST["inputState"]) ? mysqli_real_escape_string($conn, $_POST["inputState"]) : "";
+    $senha = isset($_POST["inputPassword"]) ? mysqli_real_escape_string($conn, $_POST["inputPassword"]) : "";
+
+
+    // Insere os dados na tabela "cadastro"
+    $sql = "INSERT INTO cadastro (nome, cpf, email, cep, endereco, enderecoNumero, cidade, estado, senha) 
+            VALUES ('$nome', '$cpf', '$email', '$cep', '$endereco', '$numero', '$cidade', '$estado', '$senha')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Cadastro realizado com sucesso!";
+    } else {
+        echo "Erro ao cadastrar: " . $conn->error;
+    }
+
+    // Fecha a conexão com o banco de dados
+    $conn->close();
 }
-
-// Recupera os dados do formulário
-$nome = $_POST['inputNome'];
-$cpf = $_POST['inputCPF'];
-$email = $_POST['inputEmail'];
-$cep = $_POST['inputCEP'];
-$endereco = $_POST['address'];
-$enderecoNumero = $_POST['addressNumber'];
-$cidade = $_POST['inputCity'];
-$estado = $_POST['inputState'];
-$senha = $_POST['inputPassword'];
-
-// Verifica se o CPF já está cadastrado
-$sqlVerificarCPF = "SELECT * FROM cadastro WHERE cpf = '$cpf'";
-$resultadoCPF = $conn->query($sqlVerificarCPF);
-
-if ($resultadoCPF->num_rows > 0) {
-    echo "Erro: Este CPF já está cadastrado.";
-    exit();
-}
-
-// Insere os dados na tabela
-$sqlInserir = "INSERT INTO cadastro (cpf, email, senha, endereco, enderecoNumero, cidade, estado) VALUES ('$cpf', '$email', '$senha', '$endereco', '$enderecoNumero', '$cidade', '$estado')";
-
-if ($conn->query($sqlInserir) === TRUE) {
-    echo "Sucesso: Usuário cadastrado com sucesso.";
-} else {
-    echo "Erro: " . $conn->error;
-}
-
-$conn->close();
 ?>

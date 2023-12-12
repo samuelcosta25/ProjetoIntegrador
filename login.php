@@ -1,30 +1,41 @@
 <?php
+// Inicie a sessão
+session_start();
+
 // Conexão com o banco de dados
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "petseven";
 
+// Criar a conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica a conexão
+// Verificar a conexão
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
+// Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["cadastroEmail"];
-    $senha = $_POST["cadastroSenha"];
+    // Verifica se as chaves do array $_POST estão definidas
+    $email = isset($_POST['email']) ? mysqli_real_escape_string($conn, $_POST['email']) : "";
+    $senha = isset($_POST['password']) ? mysqli_real_escape_string($conn, $_POST['password']) : "";
 
-    // Inserir dados na tabela
-    $insertQuery = "INSERT INTO usuarios (email, senha) VALUES ('$email', '$senha')";
+    // Consulta o banco de dados para verificar se o e-mail e senha são válidos
+    $sqlVerificar = "SELECT * FROM cadastro WHERE email = '$email' AND senha = '$senha'";
+    $resultado = $conn->query($sqlVerificar);
 
-    if ($conn->query($insertQuery) === TRUE) {
-        echo "Cadastro realizado com sucesso!";
+    if ($resultado->num_rows > 0) {
+        // E-mail e senha válidos
+        $_SESSION['email'] = $email; // Inicia a sessão com o e-mail
+        echo "Sucesso: Login realizado com sucesso.";
     } else {
-        echo "Erro ao cadastrar: " . $conn->error;
+        // E-mail ou senha inválidos
+        echo "Erro: E-mail ou senha inválidos.";
     }
 }
 
+// Fechar a conexão
 $conn->close();
 ?>
