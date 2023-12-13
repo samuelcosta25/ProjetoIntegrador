@@ -26,10 +26,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $estado = isset($_POST["inputState"]) ? mysqli_real_escape_string($conn, $_POST["inputState"]) : "";
     $senha = isset($_POST["inputPassword"]) ? mysqli_real_escape_string($conn, $_POST["inputPassword"]) : "";
 
+    // Pet count e pets
+    $cadastrar_pets = 0;
+
+    // Inicializa as variáveis de pet
+    for ($i = 1; $i <= 10; $i++) {
+        ${"pet" . $i} = "";
+    }
+
+    // Verifica se a variável petInputs foi definida no formulário
+    if (isset($_POST["petInputs"]) && is_array($_POST["petInputs"])) {
+        $petInputs = $_POST["petInputs"];
+        $cadastrar_pets = count($petInputs);
+
+        // Adiciona os pets às colunas existentes
+        for ($i = 1; $i <= 10; $i++) {
+            $pet_column = "pet" . $i;
+            if (isset($petInputs[$i - 1])) {
+                ${$pet_column} = mysqli_real_escape_string($conn, $petInputs[$i - 1]);
+            }
+        }
+    }
 
     // Insere os dados na tabela "cadastro"
-    $sql = "INSERT INTO cadastro (nome, cpf, email, cep, endereco, enderecoNumero, cidade, estado, senha) 
-            VALUES ('$nome', '$cpf', '$email', '$cep', '$endereco', '$numero', '$cidade', '$estado', '$senha')";
+    $sql = "INSERT INTO cadastro (nome, cpf, email, cep, endereco, enderecoNumero, cidade, estado, senha, cadastrar_pets, pet1, pet2, pet3, pet4, pet5, pet6, pet7, pet8, pet9, pet10) 
+            VALUES ('$nome', '$cpf', '$email', '$cep', '$endereco', '$numero', '$cidade', '$estado', '$senha', '$cadastrar_pets', '$pet1', '$pet2', '$pet3', '$pet4', '$pet5', '$pet6', '$pet7', '$pet8', '$pet9', '$pet10')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Cadastro realizado com sucesso!";
