@@ -48,17 +48,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Insere os dados na tabela "cadastro"
+
+    // Verificar se o CPF ou e-mail já existem no banco de dados
+$verifica_sql = "SELECT * FROM cadastro WHERE cpf='$cpf' OR email='$email'";
+$result = $conn->query($verifica_sql);
+
+if ($result->num_rows > 0) {
+    // Dados duplicados encontrados
+    echo "Erro: CPF ou e-mail já cadastrado.";
+    echo '<button onclick="voltarAoIndex()">Voltar ao início</button>';
+} else {
+    // Inserir os dados na tabela "cadastro"
     $sql = "INSERT INTO cadastro (nome, cpf, email, cep, endereco, enderecoNumero, cidade, estado, senha, cadastrar_pets, pet1, pet2, pet3, pet4, pet5, pet6, pet7, pet8, pet9, pet10) 
             VALUES ('$nome', '$cpf', '$email', '$cep', '$endereco', '$numero', '$cidade', '$estado', '$senha', '$cadastrar_pets', '$pet1', '$pet2', '$pet3', '$pet4', '$pet5', '$pet6', '$pet7', '$pet8', '$pet9', '$pet10')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Cadastro realizado com sucesso!";
         echo '<button onclick="voltarAoIndex()">Voltar ao início</button>';
-   
     } else {
         echo "Erro ao cadastrar: " . $conn->error;
     }
+}
+
+
 
 
     // Fecha a conexão com o banco de dados
