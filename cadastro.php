@@ -54,11 +54,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         echo "Cadastro realizado com sucesso!";
+        echo '<button onclick="voltarAoIndex()">Voltar ao início</button>';
+   
     } else {
         echo "Erro ao cadastrar: " . $conn->error;
     }
+
 
     // Fecha a conexão com o banco de dados
     $conn->close();
 }
 ?>
+
+<script>
+function voltarAoIndex() {
+    window.location.href = "index.html";
+}
+</script>
