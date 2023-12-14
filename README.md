@@ -62,7 +62,7 @@ Esses resultados não apenas atendem, mas superam as expectativas estabelecidas 
 CRITÉRIOS DE COMPETÊNCIA E HABILIDADES (FRONT-END):
 
 Navegação do site
-![Alt text](nav1.gif)
+![Alt text](img/nav1.gif)
 
 Navegação do site par2
 ![Alt text](nav2.gif)
