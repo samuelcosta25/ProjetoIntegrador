@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="path/to/bootstrap.css">
+        <link rel="stylesheet" href="path/to/custom.css">
     <link rel="stylesheet" href="general.css">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="sobre.css">
@@ -37,9 +39,11 @@
                 </ul>
             </div>
             <!-- Botões de login e Cadastro -->
-            <div class="text-end">
-                <a href="login.html"><button type="button" class="btn btn-outline-warning me-2">Login</button></a>
-                <a href="login.html"><button type="button" class="btn btn-warning">Cadastro</button></a>
+            <div class="text-end" id="navbarButtons">
+                <a href="login.html" id="loginButton" style="display: none;"><button type="button" class="btn btn-outline-warning me-2">Login</button></a>
+                <a href="login.html#tab2" id="cadastroButton" style="display: none;"><button type="button" class="btn btn-warning">Cadastro</button></a>
+                <span id="userGreeting" style="display: none;"></span>
+                <a href="logout.php" id="logoutButton" style="display: none;"><button type="button" class="btn btn-outline-danger me-2">Sair</button></a>
             </div>
         </div>
     </nav>
@@ -91,9 +95,9 @@
                 <span data-value="4"></span>
                 <span data-value="5"></span>
             </div>
-            <input type="hidden" name="rating" id="rating-value" value="">
+            <input type="hidden" name="rating" id="rating" value="">
         </div>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal">Enviar Feedback</button>
+        <button type="submit" class="btn btn-primary">Enviar Feedback</button>
     </form>
     <br><br>
     </div>
@@ -101,7 +105,7 @@
 
     <!-- Mensagem de confirmação (modal) -->
     <div id="feedbackConfirmation" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered" onclick="window.location.href = 'sobre.html';">
             <div class="modal-content">
                 <div class="modal-body">
                     <p>Obrigado pelo seu feedback!</p>
@@ -109,8 +113,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Exibição da mensagem de feedback com avaliação -->
     <div class="user-feedback" id="userFeedback"></div>
     </section>
     </div>
@@ -183,7 +185,52 @@
         </div>
     </div>
 
-    <!-- Scripts do Bootstrap (certifique-se de manter a ordem correta) -->
+    <script>
+        // Função para carregar os dados do usuário
+        function loadUserData() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var userData = JSON.parse(xhr.responseText);
+    
+                        // Atualiza a interface com os dados do usuário
+                        updateUI(userData);
+                    }
+                }
+            };
+    
+            // Abre uma requisição GET para o arquivo PHP
+            xhr.open("GET", "session_check.php", true);
+            xhr.send();
+        }
+    
+        // Função para atualizar a interface com os dados do usuário
+        function updateUI(userData) {
+            var loginButton = document.getElementById("loginButton");
+            var cadastroButton = document.getElementById("cadastroButton");
+            var userGreeting = document.getElementById("userGreeting");
+            var logoutButton = document.getElementById("logoutButton");
+    
+            if (userData.isAuthenticated) {
+                // Usuário autenticado
+                loginButton.style.display = "none";
+                cadastroButton.style.display = "none";
+                userGreeting.innerText = "Olá, " + userData.userName;
+                userGreeting.style.display = "inline-block";
+                logoutButton.style.display = "inline-block";
+            } else {
+                // Usuário não autenticado
+                loginButton.style.display = "inline-block";
+                cadastroButton.style.display = "inline-block";
+                userGreeting.style.display = "none";
+                logoutButton.style.display = "none";
+            }
+        }
+    
+        // Chama a função para carregar os dados do usuário quando a página é carregada
+        window.onload = loadUserData;
+    </script>
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
@@ -304,6 +351,38 @@
             }
         });
     </script>
+    <script>
+       document.addEventListener("DOMContentLoaded", function () {
+        var navbarButtons = document.getElementById("navbarButtons");
+        var loginButton = document.getElementById("loginButton");
+        var cadastroButton = document.getElementById("cadastroButton");
+        var userGreeting = document.getElementById("userGreeting");
+        var logoutButton = document.getElementById("logoutButton");
+
+        // Simule um usuário autenticado
+        var isAuthenticated = false; // Altere para false para simular um usuário desautenticado
+
+        if (isAuthenticated) {
+            // Usuário autenticado, mostrar o nome do usuário e botão de sair
+            var userName = "Nome do Usuário"; // Substitua pelo nome real do usuário
+            userGreeting.textContent = "Bem-vindo, " + userName + "!";
+            userGreeting.style.display = "inline-block";
+            logoutButton.style.display = "inline-block";
+            // Esconda os botões de login e cadastro
+            loginButton.style.display = "none";
+            cadastroButton.style.display = "none";
+        } else {
+            // Usuário não autenticado, mostrar botões de login e cadastro
+            loginButton.style.display = "inline-block";
+            cadastroButton.style.display = "inline-block";
+            // Esconda a saudação do usuário e o botão de logout
+            userGreeting.style.display = "none";
+            logoutButton.style.display = "none";
+        }
+    });
+    </script>
+    <script src="path/to/jquery.js"></script>
+    <script src="path/to/rating.js"></script>
 </body>
 
 </html>

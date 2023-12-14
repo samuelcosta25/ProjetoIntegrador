@@ -13,6 +13,7 @@ CREATE TABLE cadastro (
     cpf VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     senha VARCHAR(255) NOT NULL,
+    cep int NOT NULL,
     endereco VARCHAR(255) NOT NULL,
     enderecoNumero INT NOT NULL,
     cidade VARCHAR(255) NOT NULL,
@@ -38,10 +39,12 @@ CREATE TABLE email (
 );
 
 tabela feedback:
-CREATE TABLE feedback (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    avaliacao INT,
-    descricao VARCHAR(255)
+CREATE TABLE AvaliacoesFeedbacks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_usuario VARCHAR(255),
+    nota INT,
+    comentario TEXT,
+    data_avaliacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-A FAZER: LINKAR O BANCO DE FEEDBACKS; ARRUMAR BANCO CADASTRO E LOGIN.
+A FAZER: LINKAR BANCO FEEDBACK
