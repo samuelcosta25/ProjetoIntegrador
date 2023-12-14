@@ -14,7 +14,7 @@
     <title>Sobre nós</title>
 </head>
 
-<body>
+<body >
     <!-- Navbar com botão hamburger -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
@@ -45,13 +45,16 @@
     </nav>
 
     <!--RESTO DO CÓDIGO-->
-    <div class="mainSobre">
-        <div class="container mt-5">
-            <section id="sobre-nos">
+    <div class="mainSobre" style="background-image: url(img/mainSobre.jpg); background-size: cover; background-repeat: no-repeat; background-position: bottom;">
+        <div class="container mt-5" >
+            
+            
+            <section id="sobre-nos" >
                 <div class="row  d-flex justify-content-center">
-                    <div class="col-md-8">
+                    <div class="col-md-8 mt-5" style="background-color: rgba(255, 255, 255, 0.308); border-radius: 2%; width: 1100px;">
+                       
                         <h2>Sobre Nós</h2>
-                        <p>Bem-vindo à [Nome da Sua Empresa], o lugar perfeito para cuidar do seu pet! Somos uma equipe
+                        <p>Bem-vindo à Pet7, o lugar perfeito para cuidar do seu pet! Somos uma equipe
                             apaixonada por animais e estamos aqui para oferecer os melhores serviços para o seu
                             companheiro
                             peludo.</p>
@@ -63,74 +66,56 @@
                     </div>
                 </div>
             </section>
+    </div>
+    <hr>
 
-            <!-- Adição da mensagem de feedback com avaliação fixa -->
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Cliente Satisfeito</h5>
-                            <div class="rating existing">
-                                <!-- Sempre exibindo cinco estrelas -->
-                                <span data-value="1" class=""></span>
-                                <span data-value="2" class=""></span>
-                                <span data-value="3" class=""></span>
-                                <span data-value="4" class=""></span>
-                                <span data-value="5" class="selected"></span>
-                            </div>
-                            <hr>
-                            <p class="card-text">"Excelente serviço! Meu pet adorou a estadia no hotel. Equipe atenciosa
-                                e instalações de qualidade."</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Adicione mais blocos de feedback conforme necessário -->
+    <!-- Formulário para deixar um feedback -->
+  <div class="secao2"  style="background-color: rgba(255, 255, 255, 0.308); border-radius: 2%; width: 1100px; margin-left: 210px; height: 500px;">
+    <br>
+    <h3 class="d-flex justify-content-center" style="margin-top: 40px;" >Deixe seu Feedback</h3>
+    <form class="avaliacaoForm" id="feedbackForm" action="processa_feedback.php" method="post">
+        <div class="mb-3">
+            <label for="nomeCliente" class="form-label">Seu Nome</label>
+            <input type="text" class="form-control" id="nomeCliente" name="nomeCliente" required>
+        </div>
+        <div class="mb-3">
+            <label for="feedbackCliente" class="form-label">Seu Feedback</label>
+            <textarea class="form-control" id="feedbackCliente" name="feedbackCliente" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">Avaliação (1-5 estrelas)</label>
+            <div class="rating new" id="rating">
+                <span data-value="1"></span>
+                <span data-value="2"></span>
+                <span data-value="3"></span>
+                <span data-value="4"></span>
+                <span data-value="5"></span>
             </div>
+            <input type="hidden" name="rating" id="rating-value" value="">
+        </div>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal">Enviar Feedback</button>
+    </form>
+    <br><br>
+    </div>
 
-           
 
-
-
-            <!-- Formulário para deixar um feedback -->
-            <h3>Deixe seu Feedback</h3>
-            <form id="feedbackForm" action="processa_feedback.php" method="post">
-                <div class="mb-3">
-                    <label for="nomeCliente" class="form-label">Seu Nome</label>
-                    <input type="text" class="form-control" id="nomeCliente" required>
-                </div>
-                <div class="mb-3">
-                    <label for="feedbackCliente" class="form-label">Seu Feedback</label>
-                    <textarea class="form-control" id="feedbackCliente" rows="3"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="rating" class="form-label">Avaliação (1-5 estrelas)</label>
-                    <div class="rating new" id="rating">
-                        <span data-value="1"></span>
-                        <span data-value="2"></span>
-                        <span data-value="3"></span>
-                        <span data-value="4"></span>
-                        <span data-value="5"></span>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar Feedback</button>
-            </form>
-
-            <!-- Mensagem de confirmação (modal) -->
-            <div id="feedbackConfirmation" class="modal fade">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <p>Obrigado pelo seu feedback!</p>
-                        </div>
-                    </div>
+    <!-- Mensagem de confirmação (modal) -->
+    <div id="feedbackConfirmation" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Obrigado pelo seu feedback!</p>
                 </div>
             </div>
-
-            <!-- Exibição da mensagem de feedback com avaliação -->
-            <div class="user-feedback" id="userFeedback"></div>
-            </section>
         </div>
     </div>
+
+    <!-- Exibição da mensagem de feedback com avaliação -->
+    <div class="user-feedback" id="userFeedback"></div>
+    </section>
+    </div>
+    </div>
+
     <!--Footer-->
     <div class="navbarFooter">
         <div class="container">
@@ -206,7 +191,19 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
+
+
+
+
     <script>
+        $(document).ready(function () {
+            $('.rating span').click(function () {
+                var ratingValue = $(this).data('value');
+                $('#rating-value').val(ratingValue);
+                $('.rating span').removeClass('selected');
+                $(this).addClass('selected');
+            });
+        });
         document.addEventListener("DOMContentLoaded", function () {
             const feedbackForm = document.getElementById("feedbackForm");
             const feedbackConfirmationElement = document.getElementById("feedbackConfirmation");
