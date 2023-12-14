@@ -20,25 +20,31 @@ Escolha do Figma para Protótipo Inicial:
 Optamos pelo Figma para criar um protótipo de baixa fidelidade devido à sua natureza baseada em nuvem, que facilita a colaboração em tempo real. A plataforma é intuitiva, permitindo uma prototipagem rápida e iterativa, economizando recursos e tempo. Sua interface acessível beneficia toda a equipe, possibilitando testes de usabilidade eficazes e documentação clara e centralizada. O Figma oferece uma base sólida para iniciar o design, garantindo uma visão inicial do projeto Pet7 antes de refinamentos mais detalhados.
 
 Página HOME:
-![Alt text](Fhome.png)
+
+![Alt text](img/Fhome.png)
 
 Catalogos de Serviço:
-![Alt text](Fcat.png)
+
+![Alt text](img/Fcat.png)
 
 Cadastro/Login:
-![Alt text](Fcad.png)
+
+![Alt text](img/Fcad.png)
 
 Agendamentos:
-![Alt text](Fage.png)
+
+![Alt text](img/Fage.png)
 
 Sobre Nós:
-![Alt text](FSob.png)
+
+![Alt text](img/FSob.png)
 
 
 METODOLOGIA DE DESENVOLVIMENTO:
 
 Em nosso projeto Pet7, adotamos o Trello como ferramenta central para organização e comunicação. Esta plataforma fornece uma visão sistêmica do desenvolvimento, utilizando cores para categorizar informações e facilitar a identificação rápida. A definição clara dos serviços e a gestão eficiente de tarefas são prioridades, promovendo uma colaboração ágil e adaptável. O Trello se torna nosso aliado essencial na busca por um desenvolvimento organizado, eficaz e alinhado aos objetivos da Pet7.
-![Alt text](Trello.png)
+
+![Alt text](img/Trello.png)
 
 
 RESULTADOS OBTIDOS:
@@ -62,10 +68,12 @@ Esses resultados não apenas atendem, mas superam as expectativas estabelecidas 
 CRITÉRIOS DE COMPETÊNCIA E HABILIDADES (FRONT-END):
 
 Navegação do site
+
 ![Alt text](img/nav1.gif)
 
 Navegação do site par2
-![Alt text](nav2.gif)
+
+![Alt text](img/nav2.gif)
 
 
 CRITÉRIOS DE COMPETÊNCIA E HABILIDADES (BACK-END):
@@ -93,7 +101,9 @@ Como foi atendido: Adoção de práticas de programação eficientes para facili
 Esses critérios não apenas estabelecem um back-end robusto para o Pet7, mas também asseguram uma experiência segura e eficiente para usuários e desenvolvedores.
 
 
+Banco de dados:
 
+![Alt text](img/banco.png)
 
 
 CONCLUSÕES E DASAFIOS SUPERADOS: 
